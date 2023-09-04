@@ -11,7 +11,7 @@ const Table =()=>{
 
     const schedule = async()=>{
     
-        const {data,status} = await axios.post('http://localhost:8000/api/get_solution',{data:Data});    
+        const {data,status} = await axios.post('/api/get_solution',{data:Data});    
         
         if(status === 200){
 
