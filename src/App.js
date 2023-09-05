@@ -21,7 +21,6 @@ export default function App() {
   const [skipped, setSkipped] = useState(new Set());
   const [alert,setAlert] = useState({open:false,message:''})
 
-  console.log('Data : ',Data);
   const isStepOptional = (step) => {
     return step === 1;
   };
