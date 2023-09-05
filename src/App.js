@@ -12,8 +12,6 @@ import ConflictingSubjects from './ConflictingSubjects'
 import ConflictSlots from './conflictSlots';
 import Table from './components/createTable';
 
-axios.defaults.baseURL = "https://scheduling-server.onrender.com"
-
 const steps = ['Add Conflicting Subjects', 'Allot conflicting slots', 'Schedule'];
 
 export default function App() {
@@ -23,6 +21,7 @@ export default function App() {
   const [skipped, setSkipped] = useState(new Set());
   const [alert,setAlert] = useState({open:false,message:''})
 
+  console.log('Data : ',Data);
   const isStepOptional = (step) => {
     return step === 1;
   };
@@ -60,7 +59,7 @@ export default function App() {
         
         const dataArray = Data?.DataArray.map(set => Array.from(set));
 
-        const {data,status} = await axios.post('/api/get_Graph',{data:dataArray});    
+        const {data,status} = await axios.post('https://scheduling-server.onrender.com/api/get_Graph',{data:dataArray});    
         
         if(status === 200){
 
@@ -84,7 +83,7 @@ export default function App() {
 
     if(activeStep === 1){
 
-        const {data,status} = await axios.post('/api/get_solution',{data:Data});    
+        const {data,status} = await axios.post('https://scheduling-server.onrender.com/api/get_solution',{data:Data});    
         
         if(status === 200){
 
